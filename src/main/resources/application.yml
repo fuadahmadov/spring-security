@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres_db:5432/demo-db
+    driverClassName: org.postgresql.Driver
+    username: admin
+    password: admin
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+    database: postgresql
+server:
+  servlet:
+    context-path: /api
+  port: 1010
+
+
+security:
+  jwt:
+    secret: ${APP_SECRET_KEY:VGhpcyBteSBzZWNyZXQga2V5IGZvciBBcHBsaWNhdGlvbi4gUGxlYXNlIGNoYW5nZSBpbiBwcm9kdWN0aW9uLg==}
+    access-token-validity-in-minutes: 5
+    refresh-token-validity-in-minutes: 60
+  cors:
+    allowed-origins: '*'
+    allowed-methods: '*'
+    allowed-headers: '*'
+    exposed-headers: 'Authorization,Link,X-Total-Count'
+    allow-credentials: true
+    max-age: 1800
